@@ -1,9 +1,10 @@
 main: su.nightexpress.economybridge.BridgePlugin
 name: EconomyBridge
-description: Unified library to handle currency plugins easy.
+description: Unified library to handle currency plugins easy. Supports Folia.
 version: '${project.version}'
 author: NightExpress
 depend:
   - nightcore
 load: STARTUP
 api-version: 1.19
+folia-supported: true
