@@ -102,6 +102,13 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.technicallycoded</groupId>
+            <artifactId>FoliaLib</artifactId>
+            <version>0.4.4</version>
+            <scope>compile</scope>
+        </dependency>
+
         <!-- Currency/Economy hooks -->
 
         <dependency>
@@ -116,6 +123,7 @@
             <artifactId>BeastTokens</artifactId>
             <version>3.11.1</version>
             <scope>provided</scope>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
@@ -123,6 +131,7 @@
             <artifactId>votingplugin</artifactId>
             <version>6.15.1</version>
             <scope>provided</scope>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
@@ -130,6 +139,7 @@
             <artifactId>EliteMobs</artifactId>
             <version>8.5.4</version>
             <scope>provided</scope>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
@@ -152,6 +162,7 @@
             <artifactId>Nexo</artifactId>
             <version>0.9-dev</version>
             <scope>provided</scope>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
@@ -166,6 +177,7 @@
             <artifactId>Oraxen</artifactId>
             <version>1.155.1</version>
             <scope>provided</scope>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
@@ -181,6 +193,7 @@
             <artifactId>MythicLib</artifactId>
             <version>1.6.2-SNAPSHOT</version>
             <scope>provided</scope>
+            <optional>true</optional>
         </dependency>
 
         <!-- Local -->
@@ -189,6 +202,7 @@
             <artifactId>SCore</artifactId>
             <version>5.24.12.29</version>
             <scope>provided</scope>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
@@ -196,6 +210,7 @@
             <artifactId>MMOItems-API</artifactId>
             <version>6.9.5-SNAPSHOT</version>
             <scope>provided</scope>
+            <optional>true</optional>
         </dependency>
 
     </dependencies>
@@ -208,6 +223,30 @@
                 </filtering> <!-- this is the important part, it's what replaces, filters, all placeholders in the resources folder (such as ${project.version} in plugin.yml) -->
             </resource>
         </resources>
+        
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <relocations>
+                        <relocation>
+                            <pattern>com.tcoded.folialib</pattern>
+                            <shadedPattern>su.nightexpress.economybridge.lib.folialib</shadedPattern>
+                        </relocation>
+                    </relocations>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
 </project>
